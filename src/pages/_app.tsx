@@ -6,6 +6,7 @@ import { loggerLink } from '@trpc/client/links/loggerLink';
 import { withTRPC } from '@trpc/next';
 import type { AppProps } from 'next/app';
 import superjson from 'superjson';
+import '@frontend/styles/global.css';
 
 function App({ Component, pageProps }: AppProps) {
   const { data, error, isLoading } = trpc.useQuery(['users.me']);

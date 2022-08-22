@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import mailService from '@frontend/services/mailService';
 import { decode, encode } from '@frontend/utils/base64';
 import { signToken } from '@frontend/utils/jwt';
@@ -14,10 +15,8 @@ import { createRouter } from '../createRouter';
 export const userRouter = createRouter()
   .mutation('register', {
     input: createUserSchmea,
-    // eslint-disable-next-line consistent-return
     async resolve({ ctx, input }) {
       const { email, name } = input;
-
       try {
         const user = await ctx.prisma?.user.create({
           data: {
@@ -29,7 +28,7 @@ export const userRouter = createRouter()
       } catch (e) {
         if (e instanceof PrismaClientKnownRequestError) {
           // user already exists
-          if (e.code === 'p2002') {
+          if (e.code === 'P2002') {
             throw new trpc.TRPCError({
               code: 'CONFLICT',
               message: 'User already exists',
@@ -122,6 +121,9 @@ export const userRouter = createRouter()
           secure: process.env.NODE_ENV === 'production',
         }),
       );
+      return {
+        redirect: token.redirect,
+      };
     },
   })
   .query('me', {
