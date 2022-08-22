@@ -2,8 +2,14 @@ import jwt from 'jsonwebtoken';
 
 const { JWT_SECRET } = process.env;
 
-export function signToken(data: object): string {
-  return jwt.sign(data, JWT_SECRET);
+export function signToken({
+  id,
+  email,
+}: {
+  id: string;
+  email: string;
+}): string {
+  return jwt.sign({ id, email }, JWT_SECRET);
 }
 
 export function verifyToken<T>(token: string): T {
