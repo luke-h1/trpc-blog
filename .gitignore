@@ -1,0 +1,23 @@
+node_modules
+.env
+!.env.example
+.next
+build
+# misc
+.DS_Store
+*.pem
+junit.xml
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+junit.xml
+tsconfig.tsbuildinfo
+.vercel
+sitemap.xml
+robots.txt
+analyze/
+.eslintcache
+screenshots
+tsconfig.tsbuildinfo
+*.xml
