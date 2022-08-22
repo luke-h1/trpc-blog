@@ -13,9 +13,7 @@ datasource db {
 model User {
   id        String @unique @default(uuid())
   email     String @unique
-  firstName String @map("first_name")
-  lastName  String @map("last_name")
-
+  name      String 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   Post      Post[]
